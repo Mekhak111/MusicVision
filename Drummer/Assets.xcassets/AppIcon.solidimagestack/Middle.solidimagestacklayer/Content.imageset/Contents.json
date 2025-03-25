@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "horizontal-lines.png",
       "idiom" : "vision",
       "scale" : "2x"
     }

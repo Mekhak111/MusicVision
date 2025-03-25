@@ -38,6 +38,6 @@ struct InstrumentCard: View {
     .padding()
     .frame(width: 150, height: 250)
     .background(RoundedRectangle(cornerRadius: 16).fill(Color(.background)).shadow(radius: 4))
-    
   }
+  
 }

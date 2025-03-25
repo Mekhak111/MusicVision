@@ -16,20 +16,25 @@ struct ContentView: View {
   let instruments: [(name: String, image: String)] = [
     ("Piano", "piano_image"),
     ("Xylophone", "xylophone_image"),
-    ("Drum", "drum_image")
+    ("Drum", "drum_image"),
+    ("Beat Pad", "pad_image")
   ]
   
   var body: some View {
     if appModel.immersiveSpaceState == .open {
-      Button {
-        appModel.isAdjstingDrum.toggle()
-      } label: {
-        Text(appModel.isAdjstingDrum ? "Stop Adjusting" : "Adjust Instruments")
+      VStack {
+        Button {
+          appModel.isAdjstingDrum.toggle()
+        } label: {
+          Text(appModel.isAdjstingDrum ? "Stop Adjusting" : "Adjust Instruments")
+        }
+        ToggleImmersiveSpaceButton()
       }
     } else {
       selectionView
     }
   }
+  
 }
 
 extension ContentView {
@@ -50,20 +55,17 @@ extension ContentView {
               imageName: instrument.image,
               isSelected: selectedInstrument.contains(instrument.name)
             )
-            
           }
           .frame(width: 152, height: 252)
           .background(RoundedRectangle(cornerRadius: 16).fill(Color(.background)).shadow(radius: 4))
-          
-
         }
       }
-      
       .padding()
       ToggleImmersiveSpaceButton()
     }
     .padding(40)
   }
+  
 }
 
 #Preview(windowStyle: .automatic) {
