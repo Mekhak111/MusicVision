@@ -50,7 +50,14 @@ struct ToggleImmersiveSpaceButton: View {
         }
       }
     } label: {
-      Text(appModel.immersiveSpaceState == .open ? "Hide Immersive Space" : "Show Immersive Space")
+      HStack(spacing: 10) {
+        Image(appModel.immersiveSpaceState == .open ? .hideImmersive : .showImmersive)
+          .padding(.leading, 16)
+        Text(appModel.immersiveSpaceState == .open ? "Hide Immersive Space" : "Show Immersive Space")
+          .bold()
+          .padding(.trailing, 16)
+      }
+      .frame(width: 300, height: 60)
     }
     .disabled(appModel.immersiveSpaceState == .inTransition)
     .animation(.none, value: 0)
