@@ -42,6 +42,7 @@ struct InstrumentView: View {
         .padding(20)
         Text(name)
           .font(.title2)
+          .bold()
           .foregroundStyle(Color.white)
           .padding(.bottom, 18)
       }

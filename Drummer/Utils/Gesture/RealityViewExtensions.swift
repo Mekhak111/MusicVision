@@ -27,7 +27,7 @@ public extension RealityView {
       .useGestureComponent()
   }
   
-  /// Buildsa rotate gesture.
+  /// Builds a rotate gesture.
   var rotateGesture: some Gesture {
     RotateGesture3D()
       .targetedToAnyEntity()

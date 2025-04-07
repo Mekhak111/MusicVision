@@ -107,7 +107,7 @@ struct ImmersiveView: View {
     .onChange(of: appModel.isAdjstingDrum) { _, newValue in
       drumModel?.generateCollisionShapes(recursive: true)
       drumModel?.gestureComponent?.canDrag = newValue
-      drumModel?.gestureComponent?.canRotate = false
+      drumModel?.gestureComponent?.canRotate = newValue
       drumModel?.gestureComponent?.canScale = newValue
       xylophone?.generateCollisionShapes(recursive: true)
       xylophone?.gestureComponent?.canDrag = newValue
@@ -352,8 +352,11 @@ extension ImmersiveView {
       let session = SpatialTrackingSession()
       await session.run(configuration)
       
-      let righthandAnchor = AnchorEntity(.hand(.right, location: .joint(for: .indexFingerTip)))
-      let rightIndexTipCollisionEntity = ModelEntity(mesh: .generateSphere(radius: 0.005), materials: [SimpleMaterial()])
+      let righthandAnchor = AnchorEntity(.hand(.right,location: .joint(for: .indexFingerTip)))
+      let rightIndexTipCollisionEntity = ModelEntity(
+        mesh: .generateSphere(radius: 0.005),
+        materials: [SimpleMaterial()]
+      )
       rightIndexTipCollisionEntity.generateCollisionShapes(recursive: false)
       righthandAnchor.addChild(rightIndexTipCollisionEntity)
       rightIndexTipCollisionEntity.name = "rightIndex"
